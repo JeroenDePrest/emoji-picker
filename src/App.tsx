@@ -1,25 +1,39 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+// import * as emojiNames from "emojis-keywords";
+import * as emojis from "emojis-list";
+import { Box, Button, Container, Grid, Typography } from "@mui/material";
+// import * as emojis from "emojis";
 
 function App() {
+  const getRandomEmoji = () => {
+    const randomIndex = Math.round(Math.random() * emojis.length);
+    return emojis[randomIndex];
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Grid
+        display="flex"
+        mt={10}
+        alignItems="center"
+        flexDirection="column"
+        container
+      >
+        <Grid item>
+          <Typography
+            variant="h1"
+            fontSize={{ xs: "4rem" }}
+            textTransform="uppercase"
+            textAlign="center"
+            fontWeight={700}
+          >
+            Your random emoji is
+          </Typography>
+        </Grid>
+        <Grid item mt={4}>
+          <Box fontSize="10rem">{getRandomEmoji()}</Box>
+        </Grid>
+      </Grid>
+    </Container>
   );
 }
 
