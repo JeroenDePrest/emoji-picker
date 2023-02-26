@@ -68,6 +68,7 @@ function App() {
             <Typography
               variant="h2"
               fontSize="2rem"
+              textAlign="center"
             >{`:${emojiName}:`}</Typography>
           </Box>
         </Grid>
