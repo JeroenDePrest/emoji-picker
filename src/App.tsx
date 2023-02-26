@@ -1,20 +1,41 @@
 import React, { useEffect, useState } from "react";
 // import * as emojiNames from "emojis-keywords";
-import * as emojis from "emojis-list";
+// import * as emojis from "emojis-list";
+// import * as emojisNames from "emoji-names";
 import { Box, Button, Container, Grid, Typography } from "@mui/material";
 import RefreshIcon from "@mui/icons-material/Refresh";
 // import * as emojis from "emojis";
+import emojis from "./emojis.json";
+
+interface Emoji {
+  emoji: string;
+  name: string;
+  shortname: string;
+  unicode: string;
+  html: string;
+  category: string;
+  order: string;
+}
 
 function App() {
-  const [emoji, setEmoji] = useState("");
+  const [emoji, setEmoji] = useState<string>("");
+  const [emojiName, setEmojiName] = useState<string>("");
   const getRandomEmoji = () => {
     const randomIndex = Math.round(Math.random() * emojis.length);
+
     return emojis[randomIndex];
   };
 
+  const setEmojiState = () => {
+    const emoji = getRandomEmoji();
+    setEmojiName(emoji.name);
+    setEmoji(emoji.emoji);
+  };
+
   useEffect(() => {
-    setEmoji(getRandomEmoji());
+    setEmojiState();
   }, []);
+
   return (
     <Container>
       <Grid
@@ -37,7 +58,18 @@ function App() {
           </Typography>
         </Grid>
         <Grid item mt={{ xs: 4, md: 8 }}>
-          <Box fontSize="10rem">{emoji}</Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems="center"
+            gap={3}
+          >
+            <Box fontSize="10rem">{emoji}</Box>
+            <Typography
+              variant="h2"
+              fontSize="2rem"
+            >{`:${emojiName}:`}</Typography>
+          </Box>
         </Grid>
         <Grid item mt={5}>
           <Button
@@ -45,7 +77,7 @@ function App() {
             sx={{ fontFamily: "Roboto" }}
             startIcon={<RefreshIcon />}
             size="large"
-            onClick={() => setEmoji(getRandomEmoji())}
+            onClick={setEmojiState}
           >
             Role again
           </Button>
