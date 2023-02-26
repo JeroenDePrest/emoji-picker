@@ -10,6 +10,7 @@ import reportWebVitals from "./reportWebVitals";
 // import "@fontsource/roboto/400.css";
 // import "@fontsource/roboto/500.css";
 // import "@fontsource/roboto/700.css";
+import "@fontsource/oswald";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement

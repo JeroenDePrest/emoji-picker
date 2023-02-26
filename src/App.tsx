@@ -13,23 +13,25 @@ function App() {
     <Container>
       <Grid
         display="flex"
-        mt={10}
+        mt={5}
         alignItems="center"
         flexDirection="column"
         container
       >
         <Grid item>
           <Typography
+            fontFamily="Oswald"
             variant="h1"
             fontSize={{ xs: "4rem" }}
             textTransform="uppercase"
             textAlign="center"
+            color="#28292b"
             fontWeight={700}
           >
             Your random emoji is
           </Typography>
         </Grid>
-        <Grid item mt={4}>
+        <Grid item mt={{ xs: 4, md: 8 }}>
           <Box fontSize="10rem">{getRandomEmoji()}</Box>
         </Grid>
       </Grid>
